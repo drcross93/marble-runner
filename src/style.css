@@ -24,6 +24,11 @@ body,
     font-family: 'Bebas Neue', cursive;
 }
 
+.interface .marble-form,
+.interface .marble-form * {
+    pointer-events: auto;
+}
+
 /**
 * Time
 */

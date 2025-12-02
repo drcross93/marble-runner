@@ -47,6 +47,9 @@ export default function Interface()
     }, [])
     
 
+    const marble = useGame((state) => state.marble)
+    const setMarble = useGame((state) => state.setMarble)
+
     return <div className="interface">
         {/* Time */}
         <div ref={ time } className="time">0.00</div>
@@ -69,5 +72,55 @@ export default function Interface()
                 <div className={ `key large ${ jump ? 'active' : ' ' }`}></div>
             </div>
         </div>
+
+        {/* Marble Form */}
+        {phase === 'ready' && (
+            <form className="marble-form">
+                <label>
+                    Color
+                    <input
+                        type="color"
+                        value={marble.color}
+                        onChange={(e) => setMarble({ color: e.target.value })}
+                    />
+                </label>
+
+                <label>
+                    Radius
+                    <input
+                        type="range"
+                        min="0.2"
+                        max="0.5"
+                        step="0.01"
+                        value={marble.radius}
+                        onChange={(e) => setMarble({ radius: parseFloat(e.target.value) })}
+                    />
+                </label>
+
+                <label>
+                    Metalness
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.05"
+                        value={marble.metalness}
+                        onChange={(e) => setMarble({ metalness: parseFloat(e.target.value) })}
+                    />
+                </label>
+
+                <label>
+                    Roughness
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.05"
+                        value={marble.roughness}
+                        onChange={(e) => setMarble({ roughness: parseFloat(e.target.value) })}
+                    />
+                </label>
+            </form>
+        )}
     </div>   
 }

@@ -49,6 +49,16 @@ export default create(subscribeWithSelector((set) =>
 
                             return {}
                         })
-                }
+                },
+
+            marble: {
+                color: '#b388ff',
+                metalness: 0.2,
+                roughness: 0.4,
+                radius: 0.3
+            },
+
+            setMarble: (updates) =>
+                set((state) => ({ marble: { ...state.marble, ...updates } })),
         }
     }))

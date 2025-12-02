@@ -21,6 +21,7 @@ export default function Player()
     const end = useGame((state) => state.end)
     const restart = useGame((state) => state.restart)
     const blocksCount = useGame((state) => state.blocksCount)
+    const marble = useGame((state) => state.marble)
 
     // To get the ball to jump
     const jump = ()=>
@@ -172,8 +173,13 @@ export default function Player()
             position={ [0, 1, 0] }
             >
             <mesh castShadow>
-                <icosahedronGeometry args={ [0.3, 1] } />
-                <meshStandardMaterial flatShading color='mediumpurple' />
+                <icosahedronGeometry args={[ marble.radius, 1 ]} />
+                <meshStandardMaterial
+                    flatShading
+                    color={marble.color}
+                    metalness={marble.metalness}
+                    roughness={marble.roughness}
+                />
             </mesh>
         </RigidBody>
     </>
